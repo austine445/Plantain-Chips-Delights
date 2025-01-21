@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantain Chips & Food Online Ordering</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ffcc00;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .menu-item {
+            display: inline-block;
+            margin: 15px;
+            text-align: center;
+        }
+
+        .menu-item img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        form input, form select, form button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #ffcc00;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .menu-item {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            form {
+                width: 90%;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Plantain Chips Delights</h1>
+        <br>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#order">Order Online</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <h2>Delicious Plantain Chips and More</h2>
+        <img src="chip.jpg" alt="Plantain Chips" style="border-radius: 10px;width: 300px;">
+        <p>Enjoy our crispy and tasty plantain chips, made fresh daily.</p>
+    </section>
+
+    <section id="menu">
+        <h2>Our Menu</h2>
+        <div class="menu-item">
+            <img src="Sweet.jpg" alt="Plantain Chips">
+            <h3>Plantain Chips</h3>
+            <p>Price: $2.29</p>
+        </div>
+        <div class="menu-item">
+            <img src="Benachin.webp" alt="Food Item">
+            <h3>Other Food Item</h3>
+            <p>Price: $5.99</p>
+        </div>
+        <!-- Add more menu items as needed -->
+    </section>
+
+    <section id="order">
+        <h2>Order Online</h2>
+        <form id="orderForm">
+            <label for="product">Select Product:</label>
+            <select id="product" name="product">
+                <option value="plantain_chips">Plantain Chips - $2.29</option>
+                <option value="food_item">Other Food Item - $5.99</option>
+                <!-- Add more products as needed -->
+            </select>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1">
+
+            <label for="customerName">Your Name:</label>
+            <input type="text" id="customerName" name="customerName" required>
+
+            <label for="address">Delivery Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <button type="submit">Place Order</button>
+        </form>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@yourbusiness.com</p>
+        <p>Phone: +1234567890</p>
+        <button onclick="contactAlert()">Contact for Assistance</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Your Business Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const product = document.getElementById('product').value;
+            const quantity = document.getElementById('quantity').value;
+            const customerName = document.getElementById('customerName').value;
+            const address = document.getElementById('address').value;
+
+            Swal.fire(
+                'Order Placed!',
+                `Thank you, ${customerName}! Your order for ${quantity} ${product}(s) has been placed and will be delivered to ${address}.`,
+                'success'
+            );
+        });
+
+        function contactAlert() {
+            Swal.fire(
+                'Contact Us',
+                'Phone: +1234567890<br>Email: info@yourbusiness.com',
+                'info'
+            );
+        }
+    </script>
+</body>
+</html>
